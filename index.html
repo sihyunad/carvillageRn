@@ -44,7 +44,7 @@
         .quick-form { width: 360px; flex-shrink: 0; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .quick-form h3 { font-size: 20px; margin-bottom: 20px; text-align: center; font-weight: 700; }
         .icon-menu-section { background: #fff; padding: 28px 0 22px; }
-        .icon-menu-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+        .icon-menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
         .icon-menu-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 120px; border: 1px solid #dcecff; border-radius: 22px; background: linear-gradient(180deg, #f4f9ff 0%, #eaf5ff 100%); box-shadow: 0 14px 30px rgba(37,99,235,0.1), inset 0 1px 0 rgba(255,255,255,0.85); color: #1f2937; font-size: 15px; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
         .icon-menu-item:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.38); box-shadow: 0 18px 34px rgba(37,99,235,0.16), inset 0 1px 0 rgba(255,255,255,0.9); }
         .icon-menu-icon { width: 62px; height: 62px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 10px 12px rgba(37,99,235,0.22)); }
@@ -112,16 +112,53 @@
         .car-price-info { font-size: 12px; color: #666; margin-bottom: 15px; font-weight: 400; }
         .car-price { font-size: 18px; font-weight: 700; color: #ef4444; margin-bottom: 15px; }
         .btn-consult { width: 100%; padding: 12px; background: #3b82f6; color: white; border-radius: 6px; font-weight: 700; font-size: 14px; }
-
         /* 3버튼 섹션 */
         .three-section { padding: 50px 0; text-align: center; }
         .three-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
         .three-sub { font-size: 16px; color: #666; font-weight: 400; margin-bottom: 32px; }
         .three-buttons { display: flex; gap: 20px; }
-        .three-buttons .btn-box { flex: 1; border: 2px solid #3b82f6; border-radius: 12px; padding: 30px; text-align: center; color: #333; font-weight: 400; font-size: 18px; cursor: pointer; transition: 0.2s; }
-        .three-buttons .btn-box:hover { background: #3b82f6; color: white; }
-        .three-buttons .btn-box span { display: block; font-size: 18px; color: #3b82f6; font-weight: 700; margin-bottom: 10px; }
-        .three-buttons .btn-box:hover span { color: #eef2ff; }
+        .three-buttons .btn-box {
+            flex: 1;
+            border: 2px solid #3b82f6;
+            border-radius: 22px;
+            padding: 32px 28px;
+            text-align: center;
+            color: #fff;
+            background: #3b82f6;
+            font-weight: 400;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 14px 28px rgba(37,99,235,0.24);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+        }
+        .three-buttons .btn-box:hover {
+            transform: translateY(-7px) scale(1.02);
+            box-shadow: 0 22px 42px rgba(37,99,235,0.34);
+            filter: brightness(1.04);
+        }
+        .three-buttons .btn-box:active {
+            transform: translateY(-2px) scale(0.99);
+            box-shadow: 0 12px 24px rgba(37,99,235,0.26);
+        }
+        .three-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        .three-icon svg {
+            width: 68px;
+            height: 68px;
+            display: block;
+            filter: drop-shadow(0 10px 12px rgba(8,47,132,0.22));
+        }
+        .three-buttons .btn-box span { display: block; font-size: 18px; color: #f1f7ff; font-weight: 700; margin-bottom: 10px; }
+        .three-buttons .btn-box:hover span { color: #fff; }
 
         /* 중간 배너 */
         .middle-banner { background: #eef2ff; padding: 40px 0; }
@@ -934,6 +971,44 @@
     body.view-mobile .top-links { font-size: 11px; gap: 10px; }
     body.view-mobile .nav-menu { order: 3; width: 100%; overflow-x: auto; gap: 20px; font-size: 14px; padding: 10px 2px 12px; white-space: nowrap; scrollbar-width: none; }
     body.view-mobile .nav-menu::-webkit-scrollbar { display: none; }
+    .nav-more-item { display: none; }
+    .mobile-more-btn { display: none; }
+
+    body.view-mobile .nav-menu {
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+      overflow-x: visible;
+    }
+    body.view-mobile .nav-consult-item,
+    body.view-mobile .nav-faq-item {
+      display: none !important;
+    }
+    body.view-mobile .nav-more-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 26px;
+    }
+    body.view-mobile .mobile-more-btn {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+    body.view-mobile .mobile-more-btn span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #111827;
+    }
 
     /* 히어로: 모바일에서는 배너 → 아이콘 메뉴 → 빠른견적 폼 순서 */
     body.view-mobile .hero-section { padding: 16px 0 20px; }
@@ -1131,6 +1206,8 @@
     body.view-mobile .three-sub { font-size: 14px; margin-bottom: 20px; }
     body.view-mobile .three-buttons { flex-direction: column; gap: 12px; }
     body.view-mobile .three-buttons .btn-box { padding: 18px; font-size: 16px; }
+    body.view-mobile .three-icon { width: 62px; height: 62px; margin-bottom: 12px; border-radius: 20px; }
+    body.view-mobile .three-icon svg { width: 56px; height: 56px; }
     body.view-mobile .three-buttons .btn-box span { font-size: 15px; margin-bottom: 6px; }
 
     /* 중간 배너: 세로 스택 + 풀폭 버튼 */
@@ -2305,12 +2382,14 @@
       z-index: 1;
       left: 50%;
       top: 50%;
-      width: 140%;
-      height: 88%;
+      width: 94%;
+      height: 76%;
+      max-width: calc(100% - 18px);
+      max-height: calc(100% - 20px);
       margin: 0;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -48%);
       object-fit: contain;
-      filter: drop-shadow(0 10px 13px rgba(15, 23, 42, 0.14));
+      filter: drop-shadow(0 8px 11px rgba(15, 23, 42, 0.13));
     }
 
     body.view-mobile .mobile-car-svg {
@@ -2557,7 +2636,236 @@
       }
     }
 
-    </style>
+    
+
+
+    /* [추가 수정] PC에서는 맞춤 차량 추천을 기본 아이콘 메뉴 스타일과 동일하게 유지 */
+    body.view-pc #carSearch .icon-menu-item--recommend {
+      background: linear-gradient(180deg, #f4f9ff 0%, #eaf5ff 100%) !important;
+      background-image: linear-gradient(180deg, #f4f9ff 0%, #eaf5ff 100%) !important;
+      color: #1f2937 !important;
+      border-color: #dcecff !important;
+      box-shadow: 0 14px 30px rgba(37,99,235,0.1), inset 0 1px 0 rgba(255,255,255,0.85) !important;
+    }
+
+    /* =========================================
+       [추가 수정] 모바일 아이콘 메뉴 3+1 배치
+       ========================================= */
+    body.view-mobile #carSearch.icon-menu-section {
+      padding: 16px 0 14px !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 7px !important;
+      align-items: stretch !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item:not(.icon-menu-item--recommend) {
+      min-height: 72px !important;
+      padding: 8px 2px !important;
+      border-radius: 13px !important;
+      font-size: 10.5px !important;
+      line-height: 1.18 !important;
+      gap: 5px !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item:not(.icon-menu-item--recommend) .icon-menu-icon,
+    body.view-mobile #carSearch .icon-menu-item:not(.icon-menu-item--recommend) .icon-menu-icon svg {
+      width: 30px !important;
+      height: 30px !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item--price {
+      display: none !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item--recommend {
+      grid-column: 1 / -1 !important;
+      min-height: 54px !important;
+      height: 54px !important;
+      padding: 0 18px !important;
+      border-radius: 18px !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      gap: 9px !important;
+      font-size: 13px !important;
+      line-height: 1 !important;
+      letter-spacing: -0.02em !important;
+      background: #3b82f6 !important;
+      background-image: none !important;
+      color: #fff !important;
+      border-color: rgba(59, 130, 246, 0.36) !important;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255,255,255,0.28) !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item--recommend .icon-menu-icon,
+    body.view-mobile #carSearch .icon-menu-item--recommend .icon-menu-icon svg {
+      width: 30px !important;
+      height: 30px !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item--recommend .icon-menu-icon {
+      filter: drop-shadow(0 6px 10px rgba(15, 23, 42, 0.18)) !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item--recommend span:last-child::after {
+      content: "  →";
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      #carSearch.icon-menu-section {
+        padding: 16px 0 14px !important;
+      }
+
+      #carSearch .icon-menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+        align-items: stretch !important;
+      }
+
+      #carSearch .icon-menu-item:not(.icon-menu-item--recommend) {
+        min-height: 72px !important;
+        padding: 8px 2px !important;
+        border-radius: 13px !important;
+        font-size: 10.5px !important;
+        line-height: 1.18 !important;
+        gap: 5px !important;
+      }
+
+      #carSearch .icon-menu-item:not(.icon-menu-item--recommend) .icon-menu-icon,
+      #carSearch .icon-menu-item:not(.icon-menu-item--recommend) .icon-menu-icon svg {
+        width: 30px !important;
+        height: 30px !important;
+      }
+
+      #carSearch .icon-menu-item--price {
+        display: none !important;
+      }
+
+      #carSearch .icon-menu-item--recommend {
+        grid-column: 1 / -1 !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        padding: 0 18px !important;
+        border-radius: 18px !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 9px !important;
+        font-size: 13px !important;
+        line-height: 1 !important;
+        letter-spacing: -0.02em !important;
+        background: #3b82f6 !important;
+      background-image: none !important;
+        color: #fff !important;
+        border-color: rgba(59, 130, 246, 0.36) !important;
+        box-shadow: 0 12px 24px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255,255,255,0.28) !important;
+      }
+
+      #carSearch .icon-menu-item--recommend .icon-menu-icon,
+      #carSearch .icon-menu-item--recommend .icon-menu-icon svg {
+        width: 30px !important;
+        height: 30px !important;
+      }
+
+      #carSearch .icon-menu-item--recommend .icon-menu-icon {
+        filter: drop-shadow(0 6px 10px rgba(15, 23, 42, 0.18)) !important;
+      }
+
+      #carSearch .icon-menu-item--recommend span:last-child::after {
+        content: "  →";
+        font-weight: 700;
+      }
+    }
+
+
+    /* =========================================
+       [추가 수정] 모바일 한정특가/즉시출고 차량 정보 표기 간소화
+       - 모델명 / 트림명 / 월 렌탈료 구조
+       - 모바일 폰트 크기 축소
+       ========================================= */
+    body.view-mobile .mobile-car-meta {
+      padding: 0 0 2px !important;
+    }
+
+    body.view-mobile .mobile-model-name {
+      color: #111827;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.28;
+      letter-spacing: -0.045em;
+      word-break: keep-all;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    body.view-mobile .mobile-trim-name {
+      margin-top: 8px;
+      color: #737780;
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.035em;
+      word-break: keep-all;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    body.view-mobile .mobile-rent-row.is-simple {
+      margin-top: 8px;
+      gap: 0;
+      white-space: normal;
+    }
+
+    body.view-mobile .mobile-rent-row.is-simple .mobile-monthly-price {
+      color: #111827;
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+
+    body.view-mobile .mobile-rent-row.is-simple .mobile-monthly-price strong {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.045em;
+    }
+
+    body.view-mobile .mobile-brand-row,
+    body.view-mobile .mobile-price-range,
+    body.view-mobile .mobile-rent-tag {
+      display: none !important;
+    }
+
+
+    /* [추가 수정] 모바일 아이콘 메뉴와 맞춤 차량 추천 버튼 간격 조정 */
+    body.view-mobile #carSearch .icon-menu-grid {
+      row-gap: 14px !important;
+      column-gap: 7px !important;
+    }
+
+    body.view-mobile #carSearch .icon-menu-item--recommend {
+      margin-top: 3px !important;
+    }
+
+    @media (max-width: 900px) {
+      #carSearch .icon-menu-grid {
+        row-gap: 14px !important;
+        column-gap: 7px !important;
+      }
+
+      #carSearch .icon-menu-item--recommend {
+        margin-top: 3px !important;
+      }
+    }
+
+</style>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 <body class="view-pc">
@@ -2580,11 +2888,18 @@
             <div class="logo">카빌리지</div>
             <ul class="nav-menu flex">
                 <li><a href="#">한정특가</a></li>
-                <li><a href="#">차랑견적</a></li>
+                <li><a href="#">차량견적</a></li>
                 <li><a href="#">장기렌트/리스</a></li>
                 <li><a href="#">이벤트</a></li>
-                <li><a href="#">상담신청</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li class="nav-consult-item"><a href="#">상담신청</a></li>
+                <li class="nav-more-item">
+                    <button type="button" class="mobile-more-btn" aria-label="더보기 메뉴" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </li>
+                <li class="nav-faq-item"><a href="#">FAQ</a></li>
             </ul>
             <div class="top-links flex">
                 <a href="#">회사 소개</a>
@@ -2631,13 +2946,7 @@
                     <span class="icon-menu-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="gGiftBlue" x1="14" y1="6" x2="52" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#64c8ff"/><stop offset="0.48" stop-color="#1e8fff"/><stop offset="1" stop-color="#0755df"/></linearGradient><linearGradient id="gGiftYellow" x1="16" y1="12" x2="44" y2="46" gradientUnits="userSpaceOnUse"><stop stop-color="#ffe979"/><stop offset="1" stop-color="#ff9f12"/></linearGradient><filter id="sGift" x="0" y="0" width="64" height="64"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#0755df" flood-opacity="0.28"/></filter></defs><g filter="url(#sGift)"><rect x="10" y="21" width="44" height="34" rx="12" fill="url(#gGiftBlue)"/><rect x="8" y="18" width="48" height="14" rx="7" fill="url(#gGiftBlue)"/><rect x="29" y="18" width="7" height="37" rx="3.5" fill="#c8e8ff" opacity="0.95"/><path d="M22 18c-5 0-8-2.7-8-6.1 0-3 2.3-5.2 5.4-5.2 5 0 8.6 6.1 10.1 10.4-2.2.5-4.6.9-7.5.9Z" fill="url(#gGiftYellow)"/><path d="M42 18c5 0 8-2.7 8-6.1 0-3-2.3-5.2-5.4-5.2-5 0-8.6 6.1-10.1 10.4 2.2.5 4.6.9 7.5.9Z" fill="url(#gGiftYellow)"/><circle cx="50" cy="12" r="3.2" fill="#ffda3d"/><path d="M51 4l1.9 4 4.1 1.7-4.1 1.7-1.9 4-1.8-4-4.2-1.7 4.2-1.7L51 4Z" fill="#ffe979"/><path d="M17" fill="none"/><ellipse cx="25" cy="25" rx="11" ry="4" fill="#fff" opacity="0.22"/></g></svg>
                     </span>
-                    <span>이달의특가</span>
-                </a>
-                <a href="#" class="icon-menu-item">
-                    <span class="icon-menu-icon" aria-hidden="true">
-                        <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="gCar20Blue" x1="13" y1="8" x2="51" y2="55" gradientUnits="userSpaceOnUse"><stop stop-color="#66ccff"/><stop offset="0.5" stop-color="#208dff"/><stop offset="1" stop-color="#0a54d9"/></linearGradient><linearGradient id="gCar20Coin" x1="38" y1="5" x2="58" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#7fffd4"/><stop offset="0.48" stop-color="#22d3ee"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient><filter id="sCar20" x="0" y="0" width="64" height="64"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#0755df" flood-opacity="0.25"/></filter></defs><g filter="url(#sCar20)"><path d="M13 36l4.4-12.2A9 9 0 0 1 25.9 18h11.7a9 9 0 0 1 8.3 5.4L51 36v12a6 6 0 0 1-6 6H19a6 6 0 0 1-6-6V36Z" fill="url(#gCar20Blue)"/><path d="M22 27.2A4 4 0 0 1 25.8 24h11.9a4 4 0 0 1 3.8 3.2L43 32H20.5l1.5-4.8Z" fill="#d9f3ff" opacity="0.95"/><rect x="17" y="35" width="30" height="7" rx="3.5" fill="#0b64e7" opacity="0.45"/><circle cx="22" cy="47" r="5" fill="#052b8f"/><circle cx="42" cy="47" r="5" fill="#052b8f"/><circle cx="22" cy="47" r="2.4" fill="#9fdcff"/><circle cx="42" cy="47" r="2.4" fill="#9fdcff"/><circle cx="47.5" cy="16" r="11.5" fill="url(#gCar20Coin)"/><circle cx="43.5" cy="11.5" r="2.5" fill="#ffffff" opacity="0.32"/><text x="47.5" y="21" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" font-family="Arial, sans-serif">20</text><ellipse cx="26" cy="23" rx="9" ry="3" fill="#fff" opacity="0.22"/></g></svg>
-                    </span>
-                    <span>20만원대 차량</span>
+                    <span>프로모션</span>
                 </a>
                 <a href="#" class="icon-menu-item">
                     <span class="icon-menu-icon" aria-hidden="true">
@@ -2651,7 +2960,7 @@
                     </span>
                     <span>수입차 인기</span>
                 </a>
-                <button type="button" class="icon-menu-item recommend-open-btn" id="recommendOpenBtn" aria-haspopup="dialog" aria-controls="recommendModal">
+                <button type="button" class="icon-menu-item icon-menu-item--recommend recommend-open-btn" id="recommendOpenBtn" aria-haspopup="dialog" aria-controls="recommendModal">
                     <span class="icon-menu-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="gRecommendBlue" x1="13" y1="7" x2="51" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#69ceff"/><stop offset="0.5" stop-color="#258fff"/><stop offset="1" stop-color="#0754da"/></linearGradient><linearGradient id="gRecommendGreen" x1="39" y1="27" x2="57" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#57f28a"/><stop offset="1" stop-color="#12b94e"/></linearGradient><filter id="sRecommend" x="0" y="0" width="64" height="64"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#0755df" flood-opacity="0.25"/></filter></defs><g filter="url(#sRecommend)"><circle cx="28" cy="28" r="22" fill="url(#gRecommendBlue)"/><circle cx="28" cy="21" r="8" fill="#e7f7ff"/><path d="M14 45c2.7-8 8-12.2 14-12.2S39.3 37 42 45" fill="#e7f7ff"/><circle cx="45" cy="42" r="13" fill="url(#gRecommendGreen)"/><path d="M38.5 42.2l4.2 4.1 8.4-9" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 10l1.4 3 3.1 1.3-3.1 1.3-1.4 3-1.3-3-3.2-1.3 3.2-1.3 1.3-3Z" fill="#ffe979"/><ellipse cx="21" cy="16" rx="8" ry="3" fill="#fff" opacity="0.24"/></g></svg>
                     </span>
@@ -2891,14 +3200,106 @@
         <p class="three-sub">카빌리지가 딱 맞게 찾아드립니다!</p>
         <div class="three-buttons">
             <div class="btn-box">
+                <div class="three-icon" aria-hidden="true">
+                    <svg viewBox="0 0 88 88" role="img" focusable="false">
+                        <defs>
+                            <linearGradient id="dealBody3d" x1="16" y1="10" x2="76" y2="78" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#66C1FF"/>
+                                <stop offset="0.52" stop-color="#2F7DF3"/>
+                                <stop offset="1" stop-color="#1456D8"/>
+                            </linearGradient>
+                            <linearGradient id="dealSlot3d" x1="22" y1="32" x2="69" y2="58" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#E9F6FF"/>
+                                <stop offset="1" stop-color="#9DCBFF"/>
+                            </linearGradient>
+                            <linearGradient id="dealCoin3d" x1="57" y1="8" x2="76" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#FFE782"/>
+                                <stop offset="1" stop-color="#FFB72F"/>
+                            </linearGradient>
+                            <filter id="dealShadow3d" x="-20%" y="-20%" width="140%" height="150%">
+                                <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0D49B7" flood-opacity="0.26"/>
+                            </filter>
+                        </defs>
+                        <ellipse cx="44" cy="75" rx="28" ry="6" fill="#0E57C8" opacity="0.18"/>
+                        <rect x="15" y="22" width="58" height="44" rx="14" fill="url(#dealBody3d)" filter="url(#dealShadow3d)"/>
+                        <path d="M22 28c4-5 13-8 25-8h10c7 0 13 6 13 13v2c-8 3-16 4-25 4-13 0-20-3-23-11Z" fill="#89D5FF" opacity="0.38"/>
+                        <rect x="23" y="38" width="36" height="12" rx="6" fill="url(#dealSlot3d)" opacity="0.92"/>
+                        <path d="M27 54h23" stroke="#BBD9FF" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+                        <circle cx="64" cy="26" r="11" fill="url(#dealCoin3d)"/>
+                        <circle cx="64" cy="26" r="6" fill="#FFD95E" opacity="0.78"/>
+                        <path d="M70 12l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z" fill="#FFE27A"/>
+                    </svg>
+                </div>
                 <span>지금 할인 중인</span>
                 차량이 궁금해요 ➜
             </div>
             <div class="btn-box">
+                <div class="three-icon" aria-hidden="true">
+                    <svg viewBox="0 0 88 88" role="img" focusable="false">
+                        <defs>
+                            <linearGradient id="quickClock3d" x1="18" y1="12" x2="72" y2="74" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#7BD1FF"/>
+                                <stop offset="0.48" stop-color="#3B82F6"/>
+                                <stop offset="1" stop-color="#155BD8"/>
+                            </linearGradient>
+                            <linearGradient id="quickFace3d" x1="28" y1="22" x2="62" y2="62" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#F9FEFF"/>
+                                <stop offset="1" stop-color="#C5E0FF"/>
+                            </linearGradient>
+                            <linearGradient id="quickHand3d" x1="39" y1="31" x2="54" y2="52" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#FFE680"/>
+                                <stop offset="1" stop-color="#FFB133"/>
+                            </linearGradient>
+                            <filter id="quickShadow3d" x="-20%" y="-20%" width="140%" height="150%">
+                                <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0D49B7" flood-opacity="0.26"/>
+                            </filter>
+                        </defs>
+                        <ellipse cx="44" cy="75" rx="27" ry="6" fill="#0E57C8" opacity="0.18"/>
+                        <circle cx="44" cy="44" r="31" fill="url(#quickClock3d)" filter="url(#quickShadow3d)"/>
+                        <circle cx="44" cy="44" r="21" fill="url(#quickFace3d)"/>
+                        <path d="M28 21 21 14M60 21l7-7" stroke="#6DC4FF" stroke-width="6" stroke-linecap="round" opacity="0.95"/>
+                        <path d="M44 33v13l11 7" stroke="url(#quickHand3d)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="44" cy="44" r="4" fill="#FFBF3C"/>
+                        <path d="M60 18c8 6 12 14 12 25" stroke="#47D566" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.95"/>
+                        <path d="M65 13c10 8 16 18 16 31" stroke="#49D666" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.72"/>
+                        <path d="M31 23c5-4 12-6 18-5" stroke="#BFEAFF" stroke-width="6" stroke-linecap="round" opacity="0.42"/>
+                    </svg>
+                </div>
                 <span>시간이 없어요</span>
                 즉시출고 차량이 필요해요 ➜
             </div>
             <div class="btn-box">
+                <div class="three-icon" aria-hidden="true">
+                    <svg viewBox="0 0 88 88" role="img" focusable="false">
+                        <defs>
+                            <linearGradient id="bizCase3d" x1="16" y1="15" x2="75" y2="75" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#6CC6FF"/>
+                                <stop offset="0.52" stop-color="#307CF2"/>
+                                <stop offset="1" stop-color="#1354D3"/>
+                            </linearGradient>
+                            <linearGradient id="bizLock3d" x1="33" y1="8" x2="57" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#E7F6FF"/>
+                                <stop offset="1" stop-color="#9CCBFF"/>
+                            </linearGradient>
+                            <linearGradient id="bizCoin3d" x1="57" y1="12" x2="77" y2="35" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#FFE783"/>
+                                <stop offset="1" stop-color="#FFAF2F"/>
+                            </linearGradient>
+                            <filter id="bizShadow3d" x="-20%" y="-20%" width="140%" height="150%">
+                                <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0D49B7" flood-opacity="0.26"/>
+                            </filter>
+                        </defs>
+                        <ellipse cx="44" cy="75" rx="29" ry="6" fill="#0E57C8" opacity="0.18"/>
+                        <path d="M33 27v-6c0-6 5-11 11-11s11 5 11 11v6" stroke="url(#bizLock3d)" stroke-width="7" stroke-linecap="round" fill="none"/>
+                        <rect x="15" y="28" width="58" height="39" rx="12" fill="url(#bizCase3d)" filter="url(#bizShadow3d)"/>
+                        <path d="M15 42h58v9c-8 5-18 8-29 8s-21-3-29-8v-9Z" fill="#1B63DD" opacity="0.58"/>
+                        <rect x="37" y="43" width="14" height="10" rx="3" fill="#EAF6FF" opacity="0.9"/>
+                        <path d="M25 35c5-4 13-6 23-6h9" stroke="#AEE7FF" stroke-width="6" stroke-linecap="round" opacity="0.38"/>
+                        <circle cx="67" cy="24" r="10" fill="url(#bizCoin3d)"/>
+                        <path d="M63 24h8" stroke="#FFF1A6" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M22 61h17" stroke="#B9D8FF" stroke-width="4" stroke-linecap="round" opacity="0.74"/>
+                    </svg>
+                </div>
                 <span>개인/법인 사업자</span>
                 추천 차량이 필요해요 ➜
             </div>
@@ -3444,13 +3845,20 @@
           shouldUseMobile: shouldUseMobile
         };
 
-        document.querySelectorAll('[data-estimate-open], .btn-consult, .btn-banner').forEach(target => {
+        document.querySelectorAll('.btn-consult').forEach(target => {
           target.addEventListener('click', function(event) {
-            if (!shouldUseMobile()) return;
             event.preventDefault();
             const card = target.closest('.car-card');
             const carName = card ? (card.querySelector('.car-name')?.textContent || '').trim() : '';
             openModal(carName);
+          });
+        });
+
+        document.querySelectorAll('[data-estimate-open], .btn-banner').forEach(target => {
+          target.addEventListener('click', function(event) {
+            if (!shouldUseMobile()) return;
+            event.preventDefault();
+            openModal();
           });
         });
 
@@ -3484,14 +3892,14 @@
         });
 
         const mobileCars = [
-          { brand: 'HYUNDAI', logo: 'H', range: '3,712~5,471 만원', stock: '재고 1836대' },
-          { brand: 'KIA', logo: 'KIA', range: '7,337~8,595 만원', stock: '재고 57대' },
-          { brand: 'KIA', logo: 'KIA', range: '3,736~4,455 만원', stock: '재고 88대' },
-          { brand: 'HYUNDAI', logo: 'H', range: '4,386~6,421 만원', stock: '재고 31대' },
-          { brand: 'GENESIS', logo: 'GENESIS', range: '6,945~9,682 만원', stock: '재고 24대' },
-          { brand: 'KIA', logo: 'KIA', range: '3,551~4,619 만원', stock: '재고 142대' },
-          { brand: 'KIA', logo: 'KIA', range: '2,537~3,892 만원', stock: '재고 96대' },
-          { brand: 'KIA', logo: 'KIA', range: '3,506~4,915 만원', stock: '재고 73대' }
+          { brand: 'HYUNDAI', logo: 'H', model: '그랜저 하이브리드', trim: '프리미엄', stock: '재고 1836대' },
+          { brand: 'KIA', logo: 'KIA', model: 'EV9', trim: '에어', stock: '재고 57대' },
+          { brand: 'KIA', logo: 'KIA', model: '더 뉴 K8', trim: '노블레스', stock: '재고 88대' },
+          { brand: 'HYUNDAI', logo: 'H', model: '팰리세이드', trim: '프레스티지', stock: '재고 31대' },
+          { brand: 'GENESIS', logo: 'GENESIS', model: 'GV80', trim: '2.5 터보 기본형', stock: '재고 24대' },
+          { brand: 'KIA', logo: 'KIA', model: '더 뉴 카니발', trim: '3.5 가솔린 9인승 프레스티지', stock: '재고 142대' },
+          { brand: 'KIA', logo: 'KIA', model: '디 올 뉴 스포티지', trim: '1.6 터보 트렌디', stock: '재고 96대' },
+          { brand: 'KIA', logo: 'KIA', model: '더 뉴 쏘렌토', trim: '2.5 터보 프레스티지', stock: '재고 73대' }
         ];
 
         function carSvg(index) {
@@ -3546,14 +3954,10 @@
               const logoClass = data.brand === 'KIA' ? 'is-kia' : (data.brand === 'GENESIS' ? 'is-genesis' : '');
               card.insertAdjacentHTML('beforeend', `
                 <div class="mobile-car-meta">
-                  <div class="mobile-brand-row">
-                    <span class="mobile-brand-logo ${logoClass}">${data.logo}</span>
-                    <span>${carName}</span>
-                  </div>
-                  <div class="mobile-price-range">${data.range}</div>
-                  <div class="mobile-rent-row">
-                    <span class="mobile-rent-tag">장기렌트</span>
-                    <span class="mobile-monthly-price">월 <strong>${price}</strong>~</span>
+                  <div class="mobile-model-name">${data.model || carName}</div>
+                  <div class="mobile-trim-name">${data.trim || '기본형'}</div>
+                  <div class="mobile-rent-row is-simple">
+                    <span class="mobile-monthly-price">장기렌트 월 <strong>${price}</strong>원</span>
                   </div>
                 </div>
               `);
