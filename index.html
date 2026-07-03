@@ -2865,6 +2865,116 @@
       }
     }
 
+
+
+    /* 모바일 카빌리지 플래너: 공간 축소 + 가로 자동 슬라이드 */
+    body.view-mobile .planner-section {
+      padding: 30px 0 34px;
+      overflow: hidden;
+      border-bottom: 10px solid #f6f7f9;
+    }
+
+    body.view-mobile .planner-section .container {
+      overflow: hidden;
+    }
+
+    body.view-mobile .planner-section .section-title {
+      font-size: 20px;
+      line-height: 1.28;
+      margin-bottom: 6px;
+      letter-spacing: -0.04em;
+    }
+
+    body.view-mobile .planner-subtitle {
+      font-size: 12.5px;
+      line-height: 1.45;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    body.view-mobile .planner-grid {
+      display: flex;
+      grid-template-columns: none;
+      gap: 12px;
+      margin: 0 -16px;
+      padding: 2px 16px 6px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    body.view-mobile .planner-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    body.view-mobile .planner-card {
+      flex: 0 0 74%;
+      min-width: 0;
+      scroll-snap-align: start;
+      padding: 16px 14px 14px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+    }
+
+    body.view-mobile .planner-photo {
+      width: 82px;
+      height: 82px;
+      margin-bottom: 10px;
+    }
+
+    body.view-mobile .planner-card h3 {
+      font-size: 13px;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      letter-spacing: -0.04em;
+    }
+
+    body.view-mobile .planner-card p {
+      font-size: 11.5px;
+      line-height: 1.45;
+      -webkit-line-clamp: 2;
+    }
+
+    @media (max-width: 900px) {
+      .planner-section {
+        padding: 30px 0 34px;
+        overflow: hidden;
+        border-bottom: 10px solid #f6f7f9;
+      }
+      .planner-section .container { overflow: hidden; }
+      .planner-section .section-title { font-size: 20px; line-height: 1.28; margin-bottom: 6px; letter-spacing: -0.04em; }
+      .planner-subtitle { font-size: 12.5px; line-height: 1.45; margin-bottom: 16px; letter-spacing: -0.03em; }
+      .planner-grid {
+        display: flex;
+        grid-template-columns: none;
+        gap: 12px;
+        margin: 0 -16px;
+        padding: 2px 16px 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .planner-grid::-webkit-scrollbar { display: none; }
+      .planner-card {
+        flex: 0 0 74%;
+        min-width: 0;
+        scroll-snap-align: start;
+        padding: 16px 14px 14px;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+      }
+      .planner-photo { width: 82px; height: 82px; margin-bottom: 10px; }
+      .planner-card h3 { font-size: 13px; line-height: 1.35; margin-bottom: 8px; white-space: nowrap; letter-spacing: -0.04em; }
+      .planner-card p { font-size: 11.5px; line-height: 1.45; -webkit-line-clamp: 2; }
+    }
+
 </style>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
@@ -3964,7 +4074,7 @@
             }
           });
 
-          grid.insertAdjacentHTML('afterend', '<button type="button" class="mobile-more-cars">더 많은 차량 보기</button>');
+          grid.insertAdjacentHTML('afterend', '<button type="button" class="mobile-more-cars">더 보기</button>');
         });
       })();
     </script>
@@ -4201,6 +4311,65 @@
         });
         syncMobileBottomNav();
         setTimeout(syncMobileBottomNav, 60);
+      })();
+    </script>
+
+
+
+    <script>
+      // 모바일 카빌리지 플래너 카드 자동 가로 슬라이드
+      (function() {
+        const track = document.querySelector('.planner-grid');
+        if (!track) return;
+
+        const cards = Array.from(track.querySelectorAll('.planner-card'));
+        if (cards.length <= 1) return;
+
+        let currentIndex = 0;
+
+        function isMobilePlannerView() {
+          return document.body.classList.contains('view-mobile') || window.matchMedia('(max-width: 900px)').matches;
+        }
+
+        function getCardLeft(index) {
+          if (index === 0) return 0;
+          const card = cards[index];
+          return Math.max(0, card.offsetLeft - track.offsetLeft);
+        }
+
+        function movePlannerSlide() {
+          if (!isMobilePlannerView()) {
+            currentIndex = 0;
+            track.scrollTo({ left: 0, behavior: 'auto' });
+            return;
+          }
+
+          currentIndex = (currentIndex + 1) % cards.length;
+          track.scrollTo({ left: getCardLeft(currentIndex), behavior: 'smooth' });
+        }
+
+        function resetPlannerSlide() {
+          currentIndex = 0;
+          track.scrollTo({ left: 0, behavior: 'auto' });
+        }
+
+        let plannerTimer = window.setInterval(movePlannerSlide, 2800);
+
+        track.addEventListener('touchstart', function() {
+          window.clearInterval(plannerTimer);
+        }, { passive: true });
+
+        track.addEventListener('touchend', function() {
+          window.clearInterval(plannerTimer);
+          plannerTimer = window.setInterval(movePlannerSlide, 2800);
+        }, { passive: true });
+
+        window.addEventListener('resize', resetPlannerSlide);
+        document.querySelectorAll('[data-view]').forEach(button => {
+          button.addEventListener('click', function() {
+            window.setTimeout(resetPlannerSlide, 80);
+          });
+        });
       })();
     </script>
 
